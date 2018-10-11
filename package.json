@@ -1,0 +1,17 @@
+{
+  "name": "portal",
+  "version": "0.0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-client-to-server": "cd scripts && ./deploy-client-to-server.sh",
+    "before-push": "npm run install && npm run deploy-client-to-server",
+    "build-client-to-server": "cd client && npm run build",
+    "install": "npm run install-client && npm run install-server",
+    "install-server": "cd server && npm install --production",
+    "install-client": "cd client && npm install --production"
+  },
+  "author": "",
+  "license": "ISC"
+}
