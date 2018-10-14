@@ -3,6 +3,9 @@ shuki muki
 -------
 -------
 * take 
+* take 
+* take 
+* take 
 * 123
 * 333
 * 3131331
