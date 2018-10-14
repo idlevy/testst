@@ -1,0 +1,43 @@
+#!/bin/bash
+
+myos=`uname -s`
+echo $myos
+
+
+#get latests tag from remote.
+#rtag=`git ls-remote --tags | sort -r | head -1| grep -o '[^\/]*$'`
+#rtag=`cat version`
+rtag=`cat package.json |grep  version |awk -F\" '{print $4}'`
+
+#v_major, v_minor, p_major, Build_number
+v_major=`echo $rtag|awk -F"." '{print $1}'`
+v_major=`echo $rtag|awk -F"." '{print $2}'`
+v_major=`echo $rtag|awk -F"." '{print $3}'`
+ver=`echo $rtag|awk -F"." '{print $1"."$2"."$3}'`
+Build_number=`echo $rtag|awk -F"." '{print $4}'`
+echo $ver
+echo $Build_number
+#increment verion by 1 and build new verison string
+Build_number=$((Build_number+1))
+ntag=$ver"."$Build_number
+
+echo $ntag
+
+#change file
+if [ "$myos" = "Darwin" ]; then
+    sed -i '' "s/$rtag/$ntag/g" ./package.json
+else
+    sed -i "s/$rtag/$ntag/g" ./package.json
+fi
+
+#add file
+git add ./package.json
+
+#get last commit msg
+lastmsg=`git log -1 --pretty=%B`
+
+#ammend file
+git commit --amend  -m "NewVersion $ntag,  $lastmsg"
+
+
+
