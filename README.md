@@ -6,12 +6,6 @@ shuki muki
 -------
 * take 
 o* take 
-wwwwwwwwwwww
-
-
-
-
-* take 
 * take 
 * 123
 * 333
@@ -37,6 +31,7 @@ wwwwwwwwwwww
 * this commit is in 12:25
 * this commit is in 12:50
 * this commit is in 16:01
+* this commit is new
 * this commit is new
 * this commit is new
 * this commit is new
